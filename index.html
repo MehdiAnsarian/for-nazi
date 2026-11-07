@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برای نازنینم 💖</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Persian typography & Romantic Feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .cursive-font {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Romantic Gradient Background */
+        body {
+            background: linear-gradient(135deg, #1a050b 0%, #2c0b16 50%, #40101f 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Lilium Flower Floating Animations */
+        @keyframes floatPetal {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .petal {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            animation: floatPetal linear infinite;
+        }
+
+        /* Glassmorphism Card Styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 215, 230, 0.18);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 182, 193, 0.1);
+        }
+
+        /* Envelope Styling and Animations */
+        .envelope-wrapper {
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .envelope {
+            width: 100%;
+            max-width: 340px;
+            height: 220px;
+            position: relative;
+            background: #800a28;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            transition: all 0.5s ease;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-top: 120px solid #a31037;
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+        }
+
+        @media (max-width: 380px) {
+            .envelope-flap {
+                border-left-width: 150px;
+                border-right-width: 150px;
+                border-top-width: 105px;
+            }
+            .envelope {
+                max-width: 300px;
+                height: 200px;
+            }
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: radial-gradient(circle, #e63946 0%, #900c3f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+            z-index: 5;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .envelope.open .wax-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+            pointer-events: none;
+        }
+
+        /* Soft Glow Pulse */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(230, 57, 70, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(230, 57, 70, 0.8); }
+        }
+
+        .pulse-effect {
+            animation: pulseGlow 2s infinite;
+        }
+
+        /* Letter Parchment */
+        .letter-paper {
+            background: linear-gradient(to bottom, #fffdfa 0%, #f7f1e5 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background-image: radial-gradient(#e0d7c6 0.5px, transparent 0.5px);
+            background-size: 16px 16px;
+        }
+
+        /* Custom Scrollbar for Letter */
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #d4a373;
+            border-radius: 4px;
+        }
+
+        /* Lilium Vector Svg Floating Accents */
+        .lilium-corner {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            opacity: 0.85;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        /* Music Visualizer Bar */
+        .bar {
+            width: 3px;
+            background-color: #ff758c;
+            border-radius: 3px;
+            animation: bounce 1.2s ease-in-out infinite alternate;
+        }
+        .bar:nth-child(2) { animation-delay: 0.2s; }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+        .bar:nth-child(4) { animation-delay: 0.1s; }
+
+        @keyframes bounce {
+            0% { height: 4px; }
+            100% { height: 16px; }
+        }
+
+        .paused .bar {
+            animation-play-state: paused;
+            height: 4px;
+        }
+    </style>
+</head>
+<body class="flex flex-col justify-between items-center px-4 py-6 relative">
+
+    <!-- Floating Lilium Petals Background Container -->
+    <div id="petals-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Header & Names -->
+    <header class="text-center z-10 mt-2 mb-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-950/60 border border-rose-500/30 text-rose-200 text-xs tracking-wide mb-2">
+            <i class="fa-solid font-xs fa-heart text-rose-500 animate-pulse"></i>
+            <span>پیامی مخصوص از طرف مهبد</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-pink-100 to-rose-300 drop-shadow-sm">
+            مهبد <span class="text-rose-500 text-2xl font-light">♥</span> نازنین
+        </h1>
+    </header>
+
+    <!-- Main Container -->
+    <main class="w-full max-w-md my-auto z-10 flex flex-col items-center">
+        
+        <!-- STEP 1: Interactive Envelope View -->
+        <div id="envelope-screen" class="flex flex-col items-center w-full transition-all duration-700">
+            <div class="text-center mb-6">
+                <p class="text-rose-200/90 text-sm font-light">یک نامه عاشقانه برای تو منتظر است</p>
+                <p class="text-rose-400 text-xs mt-1 animate-bounce">برای باز کردن روی مهر کلیک کن <i class="fa-solid fa-hand-pointer text-xs mr-1"></i></p>
+            </div>
+
+            <!-- Envelope Component -->
+            <div id="envelope-btn" class="envelope-wrapper my-4">
+                <div id="envelope" class="envelope flex items-center justify-center relative">
+                    <!-- Wax Seal -->
+                    <div class="wax-seal pulse-effect">
+                        <i class="fa-solid fa-heart text-amber-100 text-xl"></i>
+                    </div>
+
+                    <!-- Envelope Body Back -->
+                    <div class="absolute inset-0 bg-rose-900/40 rounded-lg pointer-events-none"></div>
+
+                    <!-- Lilium Icon Overlay inside envelope flap area -->
+                    <svg class="w-16 h-16 opacity-30 text-pink-200" viewBox="0 0 100 100" fill="currentColor">
+                        <!-- Simplified Lilium Flower SVG Silhouette -->
+                        <path d="M50 15 C45 35 25 35 15 50 C25 65 45 65 50 85 C55 65 75 65 85 50 C75 35 55 35 50 15 Z" />
+                        <path d="M50 25 C40 40 30 40 25 50 C30 60 40 60 50 75 C60 60 70 60 75 50 C70 40 60 40 50 25 Z" opacity="0.6"/>
+                    </svg>
+
+                    <!-- Flap -->
+                    <div class="envelope-flap"></div>
+                </div>
+            </div>
+
+            <p class="text-xs text-rose-300/60 mt-4 text-center">
+                <i class="fa-solid fa-seedling text-pink-400 ml-1"></i> با رایحه لیلیوم و تمام وجود
+            </p>
+        </div>
+
+        <!-- STEP 2: The Open Letter Card (Initially Hidden) -->
+        <div id="letter-screen" class="hidden w-full transition-all duration-700 opacity-0 scale-95">
+            <div class="letter-paper relative p-6 sm:p-8 text-gray-800 rounded-2xl shadow-2xl border-2 border-rose-200/60 min-h-[380px] flex flex-col justify-between overflow-hidden">
+                
+                <!-- Decorative Lilium Vectors in Corners -->
+                <!-- Top Left Lilium -->
+                <svg class="lilium-corner top-0 left-0 text-pink-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                    <path d="M10 10 C30 20 40 40 30 60 C20 40 10 30 10 10 Z" fill="#ffb6c1" opacity="0.5"/>
+                    <path d="M10 10 C20 30 40 40 60 30 C40 20 30 10 10 10 Z" fill="#ffc0cb" opacity="0.6"/>
+                    <path d="M10 10 Q35 35 70 20" stroke="#d87093" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="70" cy="20" r="3" fill="#d87093"/>
+                    <circle cx="65" cy="28" r="2.5" fill="#d87093"/>
+                </svg>
+
+                <!-- Bottom Right Lilium -->
+                <svg class="lilium-corner bottom-0 right-0 transform rotate-180 text-pink-400" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                    <path d="M10 10 C30 20 40 40 30 60 C20 40 10 30 10 10 Z" fill="#ffb6c1" opacity="0.5"/>
+                    <path d="M10 10 C20 30 40 40 60 30 C40 20 30 10 10 10 Z" fill="#ffc0cb" opacity="0.6"/>
+                    <path d="M10 10 Q35 35 70 20" stroke="#d87093" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="70" cy="20" r="3" fill="#d87093"/>
+                </svg>
+
+                <!-- Letter Header -->
+                <div class="flex justify-between items-center border-b border-rose-900/10 pb-3 z-10">
+                    <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="w-3 h-3 rounded-full bg-rose-500 inline-block animate-ping"></span>
+                        <h2 class="text-rose-950 font-bold text-lg">نازنین قشنگم...</h2>
+                    </div>
+                    <span class="text-xs text-rose-800/60 font-light">نامه اختصاصی</span>
+                </div>
+
+                <!-- Letter Body / Typewriter Content -->
+                <div class="my-6 z-10 text-right leading-relaxed text-gray-800 font-medium text-base sm:text-lg custom-scroll overflow-y-auto max-h-[260px] pl-1">
+                    <p id="typewriter-text" class="inline"></p>
+                    <span id="cursor" class="inline-block w-1.5 h-5 bg-rose-600 ml-1 animate-pulse"></span>
+                </div>
+
+                <!-- Letter Footer -->
+                <div class="pt-3 border-t border-rose-900/10 flex justify-between items-end z-10">
+                    <div class="text-xs text-rose-800/70">
+                        <span>همیشه تو فکرمی</span>
+                    </div>
+                    <div class="text-left dir-ltr">
+                        <p class="text-xs text-rose-900/60">از طرف:</p>
+                        <p class="text-xl font-extrabold text-rose-900 cursive-font">Mahbod</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons below letter -->
+            <div class="mt-6 flex justify-center gap-3">
+                <button id="replay-btn" class="px-4 py-2 rounded-full glass-card text-rose-200 text-xs flex items-center gap-2 hover:bg-rose-900/40 transition">
+                    <i class="fa-solid fa-rotate-right"></i> خواندن مجدد
+                </button>
+                <button id="heart-burst-btn" class="px-5 py-2 rounded-full bg-gradient-to-r from-rose-600 to-pink-600 text-white text-xs font-semibold shadow-lg shadow-rose-900/50 flex items-center gap-2 hover:scale-105 active:scale-95 transition">
+                    <i class="fa-solid fa-heart"></i> ارسال عشق
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Audio Control Floating Bar -->
+    <footer class="w-full max-w-md z-10 mt-4 mb-2">
+        <div class="glass-card rounded-2xl p-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <button id="music-toggle" class="w-10 h-10 rounded-full bg-rose-600/80 text-white flex items-center justify-center shadow-md focus:outline-none hover:bg-rose-600 transition">
+                    <i id="music-icon" class="fa-solid fa-music"></i>
+                </button>
+                <div class="flex flex-col">
+                    <span class="text-xs font-semibold text-rose-100">موسیقی ملایم عاشقانه</span>
+                    <span id="music-status" class="text-[10px] text-rose-300/80">برای پخش لمس کنید</span>
+                </div>
+            </div>
+
+            <!-- Audio Visualizer Indicator -->
+            <div id="visualizer" class="flex items-end gap-1 h-4 px-2 paused">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HTML5 Audio Element (Using a copyright-free romantic ambient soundtrack) -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112181.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Content data
+        const loveMessage = "نازنینم الان چند هفته‌ای هست کیلومترها از هم دوریم. چقدر دلم میخواست الان همین چا پیشم باشی؛ بجای اینکه کیبورد تو دستای من باشه دوست داشتم دستای تو ، توی دستام می بود. دلم تنگته جوجه. همیشه توی دعواها و بحث‌ها همیشه یک نفرمون کوتاه میومد ولی ای کاش این بار این فاصله بین من و تو کوتاه بیاد و دوباره تو بغل هم باشیم. دوست دارم دختر نازم.";
+
+        // Elements
+        const envelopeBtn = document.getElementById('envelope-btn');
+        const envelope = document.getElementById('envelope');
+        const envelopeScreen = document.getElementById('envelope-screen');
+        const letterScreen = document.getElementById('letter-screen');
+        const typewriterText = document.getElementById('typewriter-text');
+        const cursor = document.getElementById('cursor');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        const musicStatus = document.getElementById('music-status');
+        const visualizer = document.getElementById('visualizer');
+        const bgMusic = document.getElementById('bg-music');
+        const replayBtn = document.getElementById('replay-btn');
+        const heartBurstBtn = document.getElementById('heart-burst-btn');
+        const petalsContainer = document.getElementById('petals-container');
+
+        let isPlaying = false;
+        let isTyping = false;
+
+        // Create Lilium Petal Falling Animation Elements
+        function createPetals() {
+            const petalCount = 15;
+            const colors = ['#ffe6ea', '#ffb3c1', '#ff8099', '#ffffff'];
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                // SVG shapes for Lilium Petals / Leaves
+                petal.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="${colors[Math.floor(Math.random() * colors.length)]}" opacity="0.7">
+                        <path d="M12,2 C8,8 4,12 12,22 C20,12 16,8 12,2 Z" />
+                    </svg>
+                `;
+
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.animationDuration = `${6 + Math.random() * 8}s`;
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                petalsContainer.appendChild(petal);
+            }
+        }
+
+        // Music Player Controls
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.className = "fa-solid fa-play";
+                musicStatus.innerText = "متوقف شد";
+                visualizer.classList.add('paused');
+                isPlaying = false;
+            } else {
+                bgMusic.play().then(() => {
+                    musicIcon.className = "fa-solid fa-pause";
+                    musicStatus.innerText = "در حال پخش...";
+                    visualizer.classList.remove('paused');
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log("Audio play deferred:", err);
+                });
+            }
+        }
+
+        musicToggle.addEventListener('click', toggleMusic);
+
+        // Typewriter Effect Function
+        function startTypewriter(text, i = 0) {
+            if (i === 0) {
+                typewriterText.innerText = '';
+                cursor.style.display = 'inline-block';
+                isTyping = true;
+            }
+
+            if (i < text.length) {
+                typewriterText.innerText += text.charAt(i);
+                setTimeout(() => startTypewriter(text, i + 1), 55);
+            } else {
+                isTyping = false;
+                setTimeout(() => {
+                    cursor.style.display = 'none';
+                }, 1000);
+            }
+        }
+
+        // Open Envelope Handler
+        envelopeBtn.addEventListener('click', () => {
+            if (envelope.classList.contains('open')) return;
+
+            // Step 1: Open Flap
+            envelope.classList.add('open');
+
+            // Play music automatically on user interaction if not started
+            if (!isPlaying) {
+                toggleMusic();
+            }
+
+            // Step 2: Fade out Envelope Screen, show Letter
+            setTimeout(() => {
+                envelopeScreen.classList.add('opacity-0', 'scale-90');
+                
+                setTimeout(() => {
+                    envelopeScreen.classList.add('hidden');
+                    letterScreen.classList.remove('hidden');
+                    
+                    // Trigger reflow
+                    void letterScreen.offsetWidth;
+
+                    letterScreen.classList.remove('opacity-0', 'scale-95');
+                    letterScreen.classList.add('opacity-100', 'scale-100');
+
+                    // Start Typewriter
+                    startTypewriter(loveMessage);
+                }, 400);
+            }, 700);
+        });
+
+        // Replay Button Listener
+        replayBtn.addEventListener('click', () => {
+            if (isTyping) return;
+            startTypewriter(loveMessage);
+        });
+
+        // Heart Burst Animation on button click
+        heartBurstBtn.addEventListener('click', (e) => {
+            const rect = heartBurstBtn.getBoundingClientRect();
+            for (let i = 0; i < 12; i++) {
+                createFloatingHeart(rect.left + rect.width / 2, rect.top);
+            }
+        });
+
+        function createFloatingHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.className = 'fixed z-50 pointer-events-none text-rose-500 text-lg transition-all duration-1000';
+            heart.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            document.body.appendChild(heart);
+
+            const destinationX = x + (Math.random() - 0.5) * 160;
+            const destinationY = y - 100 - Math.random() * 80;
+            const rotation = (Math.random() - 0.5) * 90;
+            const scale = 0.5 + Math.random() * 0.8;
+
+            requestAnimationFrame(() => {
+                heart.style.transform = `translate(${destinationX - x}px, ${destinationY - y}px) scale(${scale}) rotate(${rotation}deg)`;
+                heart.style.opacity = '0';
+            });
+
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+        }
+
+        // Initialize background petals on load
+        window.onload = () => {
+            createPetals();
+        };
+    </script>
+</body>
+</html>
